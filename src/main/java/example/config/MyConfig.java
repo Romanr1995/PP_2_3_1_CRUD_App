@@ -48,16 +48,6 @@ public class MyConfig implements WebMvcConfigurer {
         dataSource.setPassword(env.getRequiredProperty("db.password"));
         return dataSource;
     }
-
-//    @Bean
-//    public LocalSessionFactoryBean getSessionFactory() {
-//        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-//        factoryBean.setDataSource(getDataSource());
-//        factoryBean.setHibernateProperties(hibernateProperties());
-//        factoryBean.setPackagesToScan("example.entity");
-//        return factoryBean;
-//    }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -81,11 +71,4 @@ public class MyConfig implements WebMvcConfigurer {
         txManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return txManager;
     }
-
-//    @Bean
-//    public HibernateTransactionManager getTransactionManager() {
-//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-//        transactionManager.setSessionFactory(getSessionFactory().getObject());
-//        return transactionManager;
-//    }
 }
